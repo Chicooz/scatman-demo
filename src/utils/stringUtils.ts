@@ -188,4 +188,17 @@ export class StringUtils {
     }
     return /^[a-zA-Z]+$/.test(input);
   }
+
+  /**
+   * Checks if a string contains only alphanumeric characters.
+   * @param input - The string to check.
+   * @returns True if the string contains only alphanumeric characters, false otherwise.
+   */
+  public static isAlphanumeric(input: string | null | undefined): boolean {
+    if (!isString(input)) {
+      console.error('Invalid input: Expected a string.');
+      return false;
+    }
+    return /^[a-zA-Z0-9]+$/.test(input);
+  }
 }
