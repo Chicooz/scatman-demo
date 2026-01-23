@@ -235,3 +235,60 @@ export function tangent(angle: number): number {
     }
     return Math.tan(angle);
 }
+
+/**
+ * Calculates the average (arithmetic mean) of a list of numbers.
+ * @param {number[]} numbers - An array of numbers.
+ * @returns {number} The average of the input numbers.
+ * @throws {Error} Throws an error if the input is not an array of numbers or if the array is empty.
+ */
+export function average(numbers: number[]): number {
+    if (!Array.isArray(numbers) || numbers.length === 0) {
+        throw new Error("Input must be a non-empty array of numbers.");
+    }
+    if (!numbers.every(n => typeof n === 'number')) {
+        throw new Error("All elements in the array must be numbers.");
+    }
+    const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+    return sum / numbers.length;
+}
+
+/**
+ * Calculates the median of a list of numbers.
+ * @param {number[]} numbers - An array of numbers.
+ * @returns {number} The median of the input numbers.
+ * @throws {Error} Throws an error if the input is not an array of numbers or if the array is empty.
+ */
+export function median(numbers: number[]): number {
+    if (!Array.isArray(numbers) || numbers.length === 0) {
+        throw new Error("Input must be a non-empty array of numbers.");
+    }
+    if (!numbers.every(n => typeof n === 'number')) {
+        throw new Error("All elements in the array must be numbers.");
+    }
+    const sorted = [...numbers].sort((a, b) => a - b);
+    const middle = Math.floor(sorted.length / 2);
+    if (sorted.length % 2 === 0) {
+        return (sorted[middle - 1] + sorted[middle]) / 2;
+    }
+    return sorted[middle];
+}
+
+/**
+ * Calculates the standard deviation of a list of numbers.
+ * @param {number[]} numbers - An array of numbers.
+ * @returns {number} The standard deviation of the input numbers.
+ * @throws {Error} Throws an error if the input is not an array of numbers or if the array is empty.
+ */
+export function standardDeviation(numbers: number[]): number {
+    if (!Array.isArray(numbers) || numbers.length === 0) {
+        throw new Error("Input must be a non-empty array of numbers.");
+    }
+    if (!numbers.every(n => typeof n === 'number')) {
+        throw new Error("All elements in the array must be numbers.");
+    }
+    const avg = average(numbers);
+    const squareDiffs = numbers.map(value => Math.pow(value - avg, 2));
+    const avgSquareDiff = average(squareDiffs);
+    return Math.sqrt(avgSquareDiff);
+}
