@@ -1,3 +1,4 @@
+FILE: src/utils/jsonParser.ts
 import { parse, stringify } from 'JSON';
 
 /**
@@ -62,5 +63,17 @@ export class JsonParser {
             console.error('Failed to parse JSON:', error);
             return { error: 'Invalid JSON format' };
         }
+    }
+
+    /**
+     * Parses a JSON string and returns the result or a default value.
+     * 
+     * @param jsonString - The JSON string to parse.
+     * @param defaultValue - The default value to return if parsing fails.
+     * @returns The parsed object or the default value.
+     */
+    public static parseJsonWithDefault(jsonString: string, defaultValue: object): object {
+        const result = this.safeParseJson(jsonString);
+        return result.data || defaultValue;
     }
 }
