@@ -214,4 +214,17 @@ export class StringUtils {
     }
     return input.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
   }
+
+  /**
+   * Converts a kebab-case string to camelCase.
+   * @param input - The kebab-case string to convert.
+   * @returns The camelCase string, or null if input is not a valid string.
+   */
+  public static kebabToCamelCase(input: string | null | undefined): string | null {
+    if (!isString(input)) {
+      console.error('Invalid input: Expected a string.');
+      return null;
+    }
+    return input.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+  }
 }
