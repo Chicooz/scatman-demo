@@ -32,3 +32,11 @@ export function validateEmailDomain(email: string | null | undefined, domain: st
     }
     return email?.endsWith(`@${domain}`) || false;
 }
+
+// New function to validate email against a list of allowed domains
+export function validateEmailAgainstDomains(email: string | null | undefined, allowedDomains: string[]): boolean {
+    if (!validateEmail(email)) {
+        return false;
+    }
+    return allowedDomains.some(domain => email?.endsWith(`@${domain}`));
+}
