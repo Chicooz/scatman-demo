@@ -43,4 +43,24 @@ export class JsonParser {
             return null;
         }
     }
+
+    /**
+     * Safely parses a JSON string and returns the result or an error message.
+     * 
+     * @param jsonString - The JSON string to parse.
+     * @returns An object containing either the parsed data or an error message.
+     */
+    public static safeParseJson(jsonString: string): { data?: object; error?: string } {
+        if (typeof jsonString !== 'string') {
+            return { error: 'Input must be a string' };
+        }
+
+        try {
+            const data = JSON.parse(jsonString);
+            return { data };
+        } catch (error) {
+            console.error('Failed to parse JSON:', error);
+            return { error: 'Invalid JSON format' };
+        }
+    }
 }
