@@ -63,3 +63,21 @@ export function goodbye(name: string | null | undefined): string {
         return 'An error occurred while generating the goodbye message.';
     }
 }
+
+// New function to greet with a custom message
+export function customGreeting(name: string | null | undefined, message: string): string {
+    try {
+        // Validate input
+        if (!isString(name) || name.trim().length === 0) {
+            throw new Error('Invalid input: name must be a non-empty string.');
+        }
+        if (!isString(message) || message.trim().length === 0) {
+            throw new Error('Invalid input: message must be a non-empty string.');
+        }
+
+        return `${message}, ${name}!`;
+    } catch (error) {
+        console.error(error);
+        return 'An error occurred while generating the custom greeting.';
+    }
+}
