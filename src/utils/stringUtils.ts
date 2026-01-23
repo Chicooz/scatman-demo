@@ -161,4 +161,18 @@ export class StringUtils {
     const padding = padChar.repeat(paddingLength);
     return padding + input;
   }
+
+  /**
+   * Counts the occurrences of a substring in a string.
+   * @param input - The string to search in.
+   * @param substring - The substring to search for.
+   * @returns The number of occurrences of the substring, or null if input is not a valid string.
+   */
+  public static countOccurrences(input: string | null | undefined, substring: string): number | null {
+    if (!isString(input) || !isString(substring)) {
+      console.error('Invalid input: Expected two strings.');
+      return null;
+    }
+    return (input.match(new RegExp(substring, 'g')) || []).length;
+  }
 }
