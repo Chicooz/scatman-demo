@@ -82,4 +82,17 @@ export class StringUtils {
     }
     return input.toUpperCase();
   }
+
+  /**
+   * Reverses a given string.
+   * @param input - The string to reverse.
+   * @returns The reversed string, or null if input is not a valid string.
+   */
+  public static reverse(input: string | null | undefined): string | null {
+    if (!isString(input)) {
+      console.error('Invalid input: Expected a string.');
+      return null;
+    }
+    return input.split('').reverse().join('');
+  }
 }
