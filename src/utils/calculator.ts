@@ -67,3 +67,15 @@ function validateNumbers(a: any, b: any): void {
         throw new Error("Both inputs must be numbers.");
     }
 }
+
+/**
+ * Calculates the modulus of two numbers.
+ * @param {number} a - The first number.
+ * @param {number} b - The second number.
+ * @returns {number} The modulus of the two numbers.
+ * @throws {Error} Throws an error if inputs are not numbers.
+ */
+export function modulus(a: number, b: number): number {
+    validateNumbers(a, b);
+    return a % b;
+}
