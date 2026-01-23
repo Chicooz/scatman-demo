@@ -91,3 +91,35 @@ export function power(base: number, exponent: number): number {
     validateNumbers(base, exponent);
     return Math.pow(base, exponent);
 }
+
+/**
+ * Supported operation types.
+ */
+export type Operation = 'add' | 'subtract' | 'multiply' | 'divide' | 'modulus' | 'power';
+
+/**
+ * Performs a calculation based on the given operation.
+ * @param {Operation} operation - The operation to perform.
+ * @param {number} a - The first operand.
+ * @param {number} b - The second operand.
+ * @returns {number} The result of the calculation.
+ * @throws {Error} Throws an error if the operation is not supported.
+ */
+export function calculate(operation: Operation, a: number, b: number): number {
+    switch (operation) {
+        case 'add':
+            return add(a, b);
+        case 'subtract':
+            return subtract(a, b);
+        case 'multiply':
+            return multiply(a, b);
+        case 'divide':
+            return divide(a, b);
+        case 'modulus':
+            return modulus(a, b);
+        case 'power':
+            return power(a, b);
+        default:
+            throw new Error(`Unsupported operation: ${operation}`);
+    }
+}
