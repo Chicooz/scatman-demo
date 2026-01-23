@@ -123,3 +123,45 @@ export function calculate(operation: Operation, a: number, b: number): number {
             throw new Error(`Unsupported operation: ${operation}`);
     }
 }
+
+/**
+ * Calculates the square root of a number.
+ * @param {number} a - The number to calculate the square root of.
+ * @returns {number} The square root of the input number.
+ * @throws {Error} Throws an error if the input is not a non-negative number.
+ */
+export function squareRoot(a: number): number {
+    if (typeof a !== 'number' || a < 0) {
+        throw new Error("Input must be a non-negative number.");
+    }
+    return Math.sqrt(a);
+}
+
+/**
+ * Calculates the absolute value of a number.
+ * @param {number} a - The number to calculate the absolute value of.
+ * @returns {number} The absolute value of the input number.
+ * @throws {Error} Throws an error if the input is not a number.
+ */
+export function absoluteValue(a: number): number {
+    if (typeof a !== 'number') {
+        throw new Error("Input must be a number.");
+    }
+    return Math.abs(a);
+}
+
+/**
+ * Rounds a number to a specified number of decimal places.
+ * @param {number} a - The number to round.
+ * @param {number} decimalPlaces - The number of decimal places to round to.
+ * @returns {number} The rounded number.
+ * @throws {Error} Throws an error if inputs are not valid numbers.
+ */
+export function round(a: number, decimalPlaces: number): number {
+    validateNumbers(a, decimalPlaces);
+    if (!Number.isInteger(decimalPlaces) || decimalPlaces < 0) {
+        throw new Error("Decimal places must be a non-negative integer.");
+    }
+    const factor = Math.pow(10, decimalPlaces);
+    return Math.round(a * factor) / factor;
+}
