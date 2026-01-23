@@ -25,3 +25,8 @@ export function hello(name: string | null | undefined): string {
 export function greetEveryone(names: Array<string | null | undefined>): Array<string> {
     return names.map(name => hello(name));
 }
+
+// New function to greet a specific person
+export function greetPerson(name: string | null | undefined): string {
+    return hello(name);
+}
