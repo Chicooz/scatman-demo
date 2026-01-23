@@ -110,4 +110,21 @@ export class StringUtils {
       txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
     );
   }
+
+  /**
+   * Truncates a string to a specified length and adds an ellipsis if truncated.
+   * @param input - The string to truncate.
+   * @param maxLength - The maximum length of the truncated string (including ellipsis).
+   * @returns The truncated string, or null if input is not a valid string.
+   */
+  public static truncate(input: string | null | undefined, maxLength: number): string | null {
+    if (!isString(input) || typeof maxLength !== 'number' || maxLength < 1) {
+      console.error('Invalid input: Expected a string and a positive integer for maxLength.');
+      return null;
+    }
+    if (input.length <= maxLength) {
+      return input;
+    }
+    return input.slice(0, maxLength - 3) + '...';
+  }
 }
