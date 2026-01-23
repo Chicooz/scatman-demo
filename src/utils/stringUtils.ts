@@ -127,4 +127,17 @@ export class StringUtils {
     }
     return input.slice(0, maxLength - 3) + '...';
   }
+
+  /**
+   * Removes all whitespace from a string.
+   * @param input - The string to remove whitespace from.
+   * @returns The string with all whitespace removed, or null if input is not a valid string.
+   */
+  public static removeWhitespace(input: string | null | undefined): string | null {
+    if (!isString(input)) {
+      console.error('Invalid input: Expected a string.');
+      return null;
+    }
+    return input.replace(/\s/g, '');
+  }
 }
