@@ -292,3 +292,73 @@ export function standardDeviation(numbers: number[]): number {
     const avgSquareDiff = average(squareDiffs);
     return Math.sqrt(avgSquareDiff);
 }
+
+/**
+ * Calculates the percentage of a number relative to another number.
+ * @param {number} part - The part value.
+ * @param {number} whole - The whole value.
+ * @returns {number} The percentage of part relative to whole.
+ * @throws {Error} Throws an error if inputs are not valid numbers or if whole is zero.
+ */
+export function percentage(part: number, whole: number): number {
+    validateNumbers(part, whole);
+    if (whole === 0) {
+        throw new Error("The whole value cannot be zero.");
+    }
+    return (part / whole) * 100;
+}
+
+/**
+ * Converts a number from one base to another.
+ * @param {string} number - The number to convert as a string.
+ * @param {number} fromBase - The base of the input number.
+ * @param {number} toBase - The base to convert the number to.
+ * @returns {string} The converted number as a string.
+ * @throws {Error} Throws an error if inputs are invalid.
+ */
+export function convertBase(number: string, fromBase: number, toBase: number): string {
+    if (typeof number !== 'string' || !Number.isInteger(fromBase) || !Number.isInteger(toBase)) {
+        throw new Error("Invalid input types.");
+    }
+    if (fromBase < 2 || fromBase > 36 || toBase < 2 || toBase > 36) {
+        throw new Error("Base must be between 2 and 36.");
+    }
+    const decimal = parseInt(number, fromBase);
+    if (isNaN(decimal)) {
+        throw new Error("Invalid number for the given base.");
+    }
+    return decimal.toString(toBase);
+}
+
+/**
+ * Calculates the greatest common divisor (GCD) of two numbers.
+ * @param {number} a - The first number.
+ * @param {number} b - The second number.
+ * @returns {number} The greatest common divisor of the two numbers.
+ * @throws {Error} Throws an error if inputs are not non-negative integers.
+ */
+export function gcd(a: number, b: number): number {
+    if (!Number.isInteger(a) || !Number.isInteger(b) || a < 0 || b < 0) {
+        throw new Error("Inputs must be non-negative integers.");
+    }
+    while (b !== 0) {
+        const temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+/**
+ * Calculates the least common multiple (LCM) of two numbers.
+ * @param {number} a - The first number.
+ * @param {number} b - The second number.
+ * @returns {number} The least common multiple of the two numbers.
+ * @throws {Error} Throws an error if inputs are not positive integers.
+ */
+export function lcm(a: number, b: number): number {
+    if (!Number.isInteger(a) || !Number.isInteger(b) || a <= 0 || b <= 0) {
+        throw new Error("Inputs must be positive integers.");
+    }
+    return Math.abs(a * b) / gcd(a, b);
+}
