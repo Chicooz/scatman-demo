@@ -165,3 +165,34 @@ export function round(a: number, decimalPlaces: number): number {
     const factor = Math.pow(10, decimalPlaces);
     return Math.round(a * factor) / factor;
 }
+
+/**
+ * Calculates the factorial of a non-negative integer.
+ * @param {number} n - The non-negative integer to calculate the factorial of.
+ * @returns {number} The factorial of the input number.
+ * @throws {Error} Throws an error if the input is not a non-negative integer.
+ */
+export function factorial(n: number): number {
+    if (!Number.isInteger(n) || n < 0) {
+        throw new Error("Input must be a non-negative integer.");
+    }
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+/**
+ * Calculates the logarithm of a number with a specified base.
+ * @param {number} x - The number to calculate the logarithm of.
+ * @param {number} base - The base of the logarithm (default is Math.E for natural logarithm).
+ * @returns {number} The logarithm of x with the specified base.
+ * @throws {Error} Throws an error if inputs are not valid positive numbers.
+ */
+export function logarithm(x: number, base: number = Math.E): number {
+    validateNumbers(x, base);
+    if (x <= 0 || base <= 0 || base === 1) {
+        throw new Error("Both x and base must be positive numbers, and base cannot be 1.");
+    }
+    return Math.log(x) / Math.log(base);
+}
