@@ -196,3 +196,42 @@ export function logarithm(x: number, base: number = Math.E): number {
     }
     return Math.log(x) / Math.log(base);
 }
+
+/**
+ * Calculates the sine of an angle (in radians).
+ * @param {number} angle - The angle in radians.
+ * @returns {number} The sine of the angle.
+ * @throws {Error} Throws an error if the input is not a number.
+ */
+export function sine(angle: number): number {
+    if (typeof angle !== 'number') {
+        throw new Error("Input must be a number.");
+    }
+    return Math.sin(angle);
+}
+
+/**
+ * Calculates the cosine of an angle (in radians).
+ * @param {number} angle - The angle in radians.
+ * @returns {number} The cosine of the angle.
+ * @throws {Error} Throws an error if the input is not a number.
+ */
+export function cosine(angle: number): number {
+    if (typeof angle !== 'number') {
+        throw new Error("Input must be a number.");
+    }
+    return Math.cos(angle);
+}
+
+/**
+ * Calculates the tangent of an angle (in radians).
+ * @param {number} angle - The angle in radians.
+ * @returns {number} The tangent of the angle.
+ * @throws {Error} Throws an error if the input is not a number.
+ */
+export function tangent(angle: number): number {
+    if (typeof angle !== 'number') {
+        throw new Error("Input must be a number.");
+    }
+    return Math.tan(angle);
+}
