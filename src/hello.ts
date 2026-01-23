@@ -30,3 +30,21 @@ export function greetEveryone(names: Array<string | null | undefined>): Array<st
 export function greetPerson(name: string | null | undefined): string {
     return hello(name);
 }
+
+// Lambda handler to expose the `hello` function via API Gateway
+import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+
+export const handler = async (
+    event: APIGatewayProxyEvent
+): Promise<APIGatewayProxyResult> => {
+    const nameParam = event.queryStringParameters?.name;
+    const message = hello(nameParam);
+
+    return {
+        statusCode: 200,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message })
+    };
+};
