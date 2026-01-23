@@ -1,4 +1,3 @@
-FILE: src/utils/stringUtils.ts
 import { isString } from 'lodash';
 
 /**
@@ -95,5 +94,20 @@ export class StringUtils {
       return null;
     }
     return input.split('').reverse().join('');
+  }
+
+  /**
+   * Converts a string to title case (capitalizes the first letter of each word).
+   * @param input - The string to convert.
+   * @returns The title-cased string, or null if input is not a valid string.
+   */
+  public static toTitleCase(input: string | null | undefined): string | null {
+    if (!isString(input)) {
+      console.error('Invalid input: Expected a string.');
+      return null;
+    }
+    return input.replace(/\w\S*/g, (txt) =>
+      txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+    );
   }
 }
