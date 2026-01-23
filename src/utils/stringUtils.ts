@@ -227,4 +227,17 @@ export class StringUtils {
     }
     return input.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
   }
+
+  /**
+   * Removes all non-alphanumeric characters from a string.
+   * @param input - The string to clean.
+   * @returns The cleaned string, or null if input is not a valid string.
+   */
+  public static removeNonAlphanumeric(input: string | null | undefined): string | null {
+    if (!isString(input)) {
+      console.error('Invalid input: Expected a string.');
+      return null;
+    }
+    return input.replace(/[^a-zA-Z0-9]/g, '');
+  }
 }
