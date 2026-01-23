@@ -175,4 +175,17 @@ export class StringUtils {
     }
     return (input.match(new RegExp(substring, 'g')) || []).length;
   }
+
+  /**
+   * Checks if a string contains only alphabetic characters.
+   * @param input - The string to check.
+   * @returns True if the string contains only alphabetic characters, false otherwise.
+   */
+  public static isAlpha(input: string | null | undefined): boolean {
+    if (!isString(input)) {
+      console.error('Invalid input: Expected a string.');
+      return false;
+    }
+    return /^[a-zA-Z]+$/.test(input);
+  }
 }
