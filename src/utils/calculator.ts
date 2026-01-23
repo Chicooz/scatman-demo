@@ -362,3 +362,26 @@ export function lcm(a: number, b: number): number {
     }
     return Math.abs(a * b) / gcd(a, b);
 }
+
+/**
+ * Calculates the nth root of a number.
+ * @param {number} a - The number to calculate the root of.
+ * @param {number} n - The root degree.
+ * @returns {number} The nth root of the number.
+ * @throws {Error} Throws an error if inputs are not valid or if trying to calculate an even root of a negative number.
+ */
+export function nthRoot(a: number, n: number): number {
+    validateNumbers(a, n);
+    if (!Number.isInteger(n) || n <= 0) {
+        throw new Error("The root degree must be a positive integer.");
+    }
+    if (a < 0 && n % 2 === 0) {
+        throw new Error("Cannot calculate even root of a negative number.");
+    }
+    return Math.sign(a) * Math.pow(Math.abs(a), 1 / n);
+}
+
+/**
+ * Calculates the exponential function (e^x).
+ * @param {number} x - The exponent.
+ * @returns {
