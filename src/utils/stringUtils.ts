@@ -140,4 +140,25 @@ export class StringUtils {
     }
     return input.replace(/\s/g, '');
   }
+
+  /**
+   * Pads a string to a specified length with a given character.
+   * @param input - The string to pad.
+   * @param length - The desired length of the padded string.
+   * @param padChar - The character to use for padding (default is space).
+   * @returns The padded string, or null if input is not a valid string.
+   */
+  public static pad(input: string | null | undefined, length: number, padChar: string = ' '): string | null {
+    if (!isString(input) || typeof length !== 'number' || length < 0) {
+      console.error('Invalid input: Expected a string and a non-negative integer for length.');
+      return null;
+    }
+    if (padChar.length !== 1) {
+      console.error('Invalid padChar: Expected a single character.');
+      return null;
+    }
+    const paddingLength = Math.max(0, length - input.length);
+    const padding = padChar.repeat(paddingLength);
+    return padding + input;
+  }
 }
