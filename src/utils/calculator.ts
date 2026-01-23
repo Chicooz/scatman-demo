@@ -79,3 +79,15 @@ export function modulus(a: number, b: number): number {
     validateNumbers(a, b);
     return a % b;
 }
+
+/**
+ * Raises a number to the power of another number.
+ * @param {number} base - The base number.
+ * @param {number} exponent - The exponent.
+ * @returns {number} The result of raising the base to the exponent.
+ * @throws {Error} Throws an error if inputs are not numbers.
+ */
+export function power(base: number, exponent: number): number {
+    validateNumbers(base, exponent);
+    return Math.pow(base, exponent);
+}
