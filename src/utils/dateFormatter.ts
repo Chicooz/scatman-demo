@@ -24,4 +24,23 @@ export class DateFormatter {
             throw new Error(`Error formatting date: ${error instanceof Error ? error.message : 'Unknown error'}`);
         }
     }
+
+    /**
+     * Formats a date to a human-readable string.
+     * 
+     * @param date - The date to format, can be a string or Date object.
+     * @returns The formatted date string.
+     */
+    public static formatToReadableString(date: string | Date | null | undefined): string {
+        if (!date) {
+            throw new Error('Invalid input: date must be provided.');
+        }
+
+        try {
+            const parsedDate = typeof date === 'string' ? parseISO(date) : date;
+            return format(parsedDate, 'MMMM dd, yyyy');
+        } catch (error) {
+            throw new Error(`Error formatting date: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+    }
 }
