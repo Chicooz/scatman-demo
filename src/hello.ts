@@ -20,3 +20,8 @@ export function hello(name: string | null | undefined): string {
         return 'An error occurred while generating the greeting.';
     }
 }
+
+// New function added for demonstration
+export function greetEveryone(names: Array<string | null | undefined>): Array<string> {
+    return names.map(name => hello(name));
+}
