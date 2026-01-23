@@ -24,3 +24,11 @@ export function validateEmail(email: string | null | undefined): boolean {
     // Validate email format
     return emailRegex.test(email);
 }
+
+// Additional email validation function for specific domain
+export function validateEmailDomain(email: string | null | undefined, domain: string): boolean {
+    if (!validateEmail(email)) {
+        return false;
+    }
+    return email?.endsWith(`@${domain}`) || false;
+}
