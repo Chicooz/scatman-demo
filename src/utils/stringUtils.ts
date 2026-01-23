@@ -1,3 +1,4 @@
+FILE: src/utils/stringUtils.ts
 import { isString } from 'lodash';
 
 /**
