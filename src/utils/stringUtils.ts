@@ -56,4 +56,30 @@ export class StringUtils {
     }
     return input.repeat(times);
   }
+
+  /**
+   * Converts a string to lowercase.
+   * @param input - The string to convert.
+   * @returns The lowercase string, or null if input is not a valid string.
+   */
+  public static toLowerCase(input: string | null | undefined): string | null {
+    if (!isString(input)) {
+      console.error('Invalid input: Expected a string.');
+      return null;
+    }
+    return input.toLowerCase();
+  }
+
+  /**
+   * Converts a string to uppercase.
+   * @param input - The string to convert.
+   * @returns The uppercase string, or null if input is not a valid string.
+   */
+  public static toUpperCase(input: string | null | undefined): string | null {
+    if (!isString(input)) {
+      console.error('Invalid input: Expected a string.');
+      return null;
+    }
+    return input.toUpperCase();
+  }
 }
