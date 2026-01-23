@@ -48,3 +48,18 @@ export const handler = async (
         body: JSON.stringify({ message })
     };
 };
+
+// New function to say goodbye
+export function goodbye(name: string | null | undefined): string {
+    try {
+        // Validate input
+        if (!isString(name) || name.trim().length === 0) {
+            throw new Error('Invalid input: name must be a non-empty string.');
+        }
+
+        return `Goodbye, ${name}! Have a great day!`;
+    } catch (error) {
+        console.error(error);
+        return 'An error occurred while generating the goodbye message.';
+    }
+}
